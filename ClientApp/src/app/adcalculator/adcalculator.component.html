@@ -1,0 +1,50 @@
+<h1 id="tableLabel">Ad Calculator</h1>
+
+<p>This component is responsible for calculating Ad fee.</p>
+
+<p *ngIf="!AdParams"><em>Loading...</em></p>
+
+
+<div class="bd-higtlight mb-3" *ngIf="AdParams">
+    <div class="form-group">
+        <label class="col-sm-2 col-form-lable">Ad Length</label>
+        <div class="col-sm-6">
+            <input type="number" class="form-control" (keyup)="validateTimeFn()" [(ngModel)]="AdTimeLen" placeholder="Enter the Ad time length" />
+        </div>
+        <small class="col-sm-6 form-text text-danger" *ngIf="InvalidateAdTime">The Ad time length must be between 5s and 300s.</small>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 col-form-lable">Media Type</label>
+        <div class="col-sm-6">
+            <select class="form-control" [(ngModel)]="MediaType" (change)="changeMediaType($event)">
+                <option>--Select--</option>
+                <option *ngFor="let mtName of AdParams.mediaTypes">
+                    {{mtName}}
+                </option>
+            </select>
+        </div>
+        <small class="col-sm-6 form-text text-danger" *ngIf="InvalidateMediaType">The media type is required item.</small>
+    </div>
+
+    <div class="form-group" *ngIf="MediaType=='Radio'">
+        <label class="col-sm-2 col-form-lable">Station</label>
+        <div class="col-sm-6">
+            <div class="form-check form-check-inline" *ngFor="let stName of AdParams.stations">
+                <input class="form-check-input" type="checkbox" value={{stName}} (change)="updateStations($event)" />
+                <label class="form-check-label">{{stName}}</label>
+            </div>
+        </div>
+        <small class="col-sm-6 form-text text-danger" *ngIf="InvalidateStations">The station is required item.</small>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 col-form-lable">Total Fee: ${{TotalFee}}</label>
+    </div>
+
+    <div class="form-group">
+        <button (click)="getAdFee()" class="btn-primary btn-primary col-sm-2">
+            Calculate
+        </button>
+    </div>
+</div>
