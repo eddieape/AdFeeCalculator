@@ -49,7 +49,7 @@ This is a Web application based on ASP.NET Core with Angular. The project is res
     Request body:
     --------------------------------
     {
-        "AdLength": 5,
+        "AdTimeLen": 5,
         "MediaType":"Radio",
         "Stations":["Star Wars FM", "Plainsmen FM"]
     }
@@ -71,7 +71,7 @@ This is a Web application based on ASP.NET Core with Angular. The project is res
     Request body:
     --------------------------------
     {
-        "AdLength": 4,
+        "AdTimeLen": 4,
         "MediaType":"Radio",
         "Stations":["Star Wars FM", "Plainsmen FM"]
     }
