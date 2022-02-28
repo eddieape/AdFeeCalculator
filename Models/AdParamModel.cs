@@ -11,12 +11,18 @@ namespace AdFeeCalculator.Models
         public int MinSecs { get; set; }
     }
 
+    public class StationLabel
+    {
+        public int Id { get; set; }
+        public string Label { get; set; }
+    }
+
     public class AdParamModel
     {
         public AdTimeLenRange AdTimeLenRange { get; set; }
 
         public IList<string> MediaTypes { get; set; }
 
-        public IList<string> Stations { get; set; }
+        public IList<StationLabel> Stations { get; set; }
     }
 }

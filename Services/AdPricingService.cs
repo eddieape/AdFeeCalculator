@@ -130,7 +130,7 @@ namespace AdFeeCalculator.Services
             {
                 for (int i = 0; i < req.Stations.Count; i++)
                 {
-                    var station = AdPricing.Stations.FirstOrDefault(e => e.Name.ToLower() == req.Stations[i].Trim().ToLower());
+                    var station = AdPricing.Stations.FirstOrDefault(e => e.Id == req.Stations[i]);
                     res.TotalFee += station.OneOffCharge;
                 }
             }
@@ -155,12 +155,26 @@ namespace AdFeeCalculator.Services
                 "Radio"
             };
 
-            adParam.Stations = new List<string> {
-                "Star Wars FM",
-                "Plainsmen FM",
-                "Other"
-            };
-
+            adParam.Stations = new List<StationLabel> (
+                new StationLabel[]
+                {
+                    new StationLabel
+                    {
+                        Id = 1,
+                        Label = "Star Wars FM"
+                    },
+                    new StationLabel
+                    {
+                        Id = 2,
+                        Label = "Plainsmen FM"
+                    },
+                    new StationLabel
+                    {
+                        Id = 3,
+                        Label = "Other"
+                    }
+                }
+            );
             return Task.FromResult(adParam);
         }
     }

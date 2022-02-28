@@ -11,8 +11,7 @@ namespace AdFeeCalculator.RQ
 
         public string MediaType { get; set; }
 
-        public IList<string> Stations { get; set; }
-
+        public IList<int> Stations { get; set; }
     }
 
     public class AdPriceRes

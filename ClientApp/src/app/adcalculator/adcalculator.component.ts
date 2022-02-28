@@ -16,7 +16,7 @@ export class AdcalculatorComponent implements OnInit {
     MediaType: string;
     InvalidateMediaType: boolean;
     TotalFee: string;
-    Stations: string[] = [];
+    Stations: number[] = [];
     InvalidateStations: boolean;
 
 
@@ -28,6 +28,7 @@ export class AdcalculatorComponent implements OnInit {
 
     ngOnInit(): void {
         this.TotalFee = "0.0";
+        this.MediaType = "";
         this.InvalidateAdTime = false;
         this.InvalidateMediaType = false;
         this.InvalidateStations = false;
@@ -72,7 +73,7 @@ export class AdcalculatorComponent implements OnInit {
             this.InvalidateAdTime = false;
         }
 
-        if (this.MediaType == "--Select--") {
+        if (this.MediaType == "") {
             this.InvalidateMediaType = true;
             return;
         } else {
@@ -89,7 +90,7 @@ export class AdcalculatorComponent implements OnInit {
         var val = {
             AdTimeLen: this.AdTimeLen,
             MediaType: this.MediaType,
-            Stations: this.Stations
+            Stations: this.Stations.map(it => Number(it))
         };
 
         this.service.getAdFee(val).subscribe(data => {

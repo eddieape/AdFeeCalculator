@@ -24,7 +24,7 @@ This is a Web application based on ASP.NET Core with Angular. The project is res
     Returns the all ad parameter objects. For example:
 
      ```
-     {
+    {
         "adTimeLenRange": {
             "maxSecs": 300,
             "minSecs": 5
@@ -34,9 +34,18 @@ This is a Web application based on ASP.NET Core with Angular. The project is res
             "Radio"
         ],
         "stations": [
-            "Star Wars FM",
-            "Plainsmen FM",
-            "Other"
+            {
+                "id": 1,
+                "label": "Star Wars FM"
+            },
+            {
+                "id": 2,
+                "label": "Plainsmen FM"
+            },
+            {
+                "id": 3,
+                "label": "Other"
+            }
         ]
     }
     ```
@@ -51,7 +60,7 @@ This is a Web application based on ASP.NET Core with Angular. The project is res
     {
         "AdTimeLen": 5,
         "MediaType":"Radio",
-        "Stations":["Star Wars FM", "Plainsmen FM"]
+        "Stations":[1, 2]
     }
     ```
 
@@ -73,7 +82,7 @@ This is a Web application based on ASP.NET Core with Angular. The project is res
     {
         "AdTimeLen": 4,
         "MediaType":"Radio",
-        "Stations":["Star Wars FM", "Plainsmen FM"]
+        "Stations":[1, 2]
     }
     ```
 
